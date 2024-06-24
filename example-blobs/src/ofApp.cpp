@@ -1,9 +1,9 @@
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace cv;
 using namespace ofxCv;
 
-void testApp::setup() {
+void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetFrameRate(120);
 	ofSetCircleResolution(64);
@@ -23,14 +23,14 @@ void testApp::setup() {
 	tracker.setRegion(trackingRegion);
 }
 
-void testApp::update() {
+void ofApp::update() {
 	sick->update();
-	if(sick->isFrameNew()) {
+	if (sick->isFrameNew()) {
 		tracker.update(*sick);
 	}
 }
 
-void testApp::draw() {
+void ofApp::draw() {
 	ofBackground(0);
 	
 	float scale = ofMap(mouseX, 0, ofGetWidth(), 0.05, .2, true);
@@ -51,17 +51,18 @@ void testApp::draw() {
 	ofPopMatrix();
 }
 
-void testApp::keyPressed(int key){
-	if(key == 'r') {
+void ofApp::keyPressed(int key) {
+	if (key == 'r') {
 		recording = !recording;
-		if(recording) {
+		if (recording) {
 			grabber.startRecording();
 		} else {
 			grabber.stopRecording("out.lms");
 		}
 	}
-	if(key == '\t') {
-		if(sick == &player) {
+	
+	if (key == '\t') {
+		if (sick == &player) {
 			sick = &grabber;
 		} else {
 			sick = &player;

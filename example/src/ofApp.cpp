@@ -1,6 +1,6 @@
-#include "testApp.h"
+#include "ofApp.h"
 
-void testApp::setup() {
+void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetFrameRate(120);
 	ofSetCircleResolution(64);
@@ -8,13 +8,13 @@ void testApp::setup() {
 	sick.setup();
 }
 
-void testApp::update() {
+void ofApp::update() {
 	sick.update();
-	if(sick.isFrameNew()) {
+	if (sick.isFrameNew()) {
 	}
 }
 
-void testApp::draw() {
+void ofApp::draw() {
 	ofBackground(0);
 	
 	float scale = ofMap(mouseX, 0, ofGetWidth(), 0.05, 2, true);	
@@ -27,8 +27,8 @@ void testApp::draw() {
 	ofPopMatrix();
 }
 
-void testApp::keyPressed(int key){
-	if(key == 's') {
+void ofApp::keyPressed(int key) {
+	if (key == 's') {
 		//sick.save();
 	}
 }

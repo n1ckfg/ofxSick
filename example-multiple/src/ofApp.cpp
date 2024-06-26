@@ -1,5 +1,5 @@
 #include "ofApp.h"
-
+#include <iterator>
 
 class LogOverlay : public ofBaseLoggerChannel {
 
